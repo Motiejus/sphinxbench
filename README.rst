@@ -12,6 +12,9 @@ node.
 Two protocols are tested: SphinxQL (MySQL style) and SphinxBin ("old" binary
 protocol).
 
+How to run benchmarks
+---------------------
+
 There are 2 testing modes: ``light``, where query is as lightweight as possible
 (empty query with a filter ``siteid = 0``). ``heavy`` is the "heaviest" query I
 could construct. In QL::
@@ -49,6 +52,20 @@ To get the graphs, run this after the tests::
     $ make results
 
 And have a look at ``tests`` directory.
+
+Plotting data
+-------------
+
+This gives a nice plot where you can see results of multiple benchmarks::
+
+    $ ./bench_plot.py tests/*
+
+This command will plot all executed benchmarks. You can do something more
+sensible instead. For example, you have two benchmarks: ``light_ql_1``,
+``light_ql_2`` and ``light_ql_3`` (one, two and three parallel workers).
+Then you would plot them like this::
+
+    $ ./bench_plot.py tests/light_*
 
 For more information check `basho_bench`_ documentation.
 
