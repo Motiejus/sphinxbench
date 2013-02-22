@@ -12,16 +12,7 @@ new(Id) ->
     application:start(crypto),
     application:start(emysql),
 
-    ok = emysql:add_pool(
-        Id,
-        1, % connection count
-        "username", % doesn't matter for Sphinx
-        undefined,
-        Host,
-        Port,
-        undefined, % no database
-        latin1 % whatever really
-    ),
+    ok = emysql:add_pool(Id, 1, "u", undefined, Host, Port, undefined, latin1),
 
     Query = case Type of
         light ->
