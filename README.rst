@@ -9,13 +9,20 @@ Performance benchmark of our quite specific Sphinx index. Briefly:
 Will test serial and parallel hits to sphinx. Mainly interested in qps per
 node.
 
-In order to execute the tests, run::
+Two protocols are tested: SphinxQL (MySQL style) and SphinxBin ("old" binary
+protocol).
 
-    $ make
-    $ ./sphinxbench ./sphinx.conf
+In order to execute the tests, run ``$ make``, and for SphinxQL benchmark::
+
+    $ ./sphinxbench ./sphinx_ql.conf
+
+or for binary protocol benchmark::
+
+    $ ./sphinxsearch ./sphinx_bin.conf
 
 
-These are interesting configuration parameters in ``sphinx.conf``::
+These are interesting configuration parameters in ``sphinx_ql.conf`` and
+``sphinx_bin.conf``::
 
     {duration, 1}. % How long to run tests, in minutes
 

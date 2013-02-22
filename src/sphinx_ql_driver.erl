@@ -1,4 +1,4 @@
--module(sphinx_driver).
+-module(sphinx_ql_driver).
 
 -include_lib("emysql/include/emysql.hrl").
 
@@ -19,16 +19,17 @@ new(Id) ->
         Host,
         Port,
         undefined, % no database
-        latin1 % we just want to be compatible
+        latin1 % whatever really
     ),
-
     {ok, Id}.
 
 run(get, _KeyGen, _ValueGen, Id) ->
+    %Query = <<"show tables">>,
     Query = <<"select * from game_data_index where MATCH('Action') ",
     "order by total_play_count desc limit 10;">>,
-    #result_packet{rows=Rows} = emysql:execute(Id, Query),
-    case length(Rows) of
-        10 -> {ok, Id};
-        _ -> {stop, {wrong_rows, length(Rows)}}
+    case emysql:execute(Id, Query) of
+        #result_packet{rows=Rows} when length(Rows) =:= 10 ->
+            {ok, Id};
+        Res ->
+            {stop, {wrong_result, Res}}
     end.
