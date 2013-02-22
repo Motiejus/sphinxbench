@@ -12,6 +12,16 @@ node.
 Two protocols are tested: SphinxQL (MySQL style) and SphinxBin ("old" binary
 protocol).
 
+There are 2 testing modes: ``light``, where query is as lightweight as possible
+(empty query with a filter ``siteid = 0``). ``heavy`` is the "heaviest" query I
+could construct. In QL::
+
+    select *
+        from game_data_index
+        where MATCH('Action')
+        order by total_play_count desc
+        limit 10;
+
 In order to execute the tests, run ``$ make``, and for SphinxQL benchmark::
 
     $ ./sphinxbench ./sphinx_ql.conf
@@ -19,7 +29,6 @@ In order to execute the tests, run ``$ make``, and for SphinxQL benchmark::
 or for binary protocol benchmark::
 
     $ ./sphinxsearch ./sphinx_bin.conf
-
 
 These are interesting configuration parameters in ``sphinx_ql.conf`` and
 ``sphinx_bin.conf``::
@@ -31,6 +40,8 @@ These are interesting configuration parameters in ``sphinx_ql.conf`` and
     {host, "127.0.0.1"}. % Where to find sphinx server
 
     {port, 9306}. % Port to SphinxQL service
+
+    {type, heavy}. % 'heavy' or 'light'
 
 
 To get the graphs, run this after the tests::
