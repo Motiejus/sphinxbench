@@ -6,7 +6,7 @@ REBAR_URL ?= https://github.com/downloads/basho/rebar/rebar
 all: compile escriptize
 
 results:
-	priv/summary.r -i tests/current
+	deps/basho_bench/priv/summary.r -i tests/current
 
 escriptize: $(REBAR)
 	$(REBAR) escriptize skip_deps=true
