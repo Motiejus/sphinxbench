@@ -1,0 +1,12 @@
+{application, sphinxbench,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { sphinxbench_app, []}},
+  {env, []}
+ ]}.
