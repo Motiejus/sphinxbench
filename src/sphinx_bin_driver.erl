@@ -6,7 +6,7 @@
 
 new(_Id) ->
     Host = basho_bench_config:get(host, "localhost"),
-    Port = basho_bench_config:get(port, 9316),
+    Port = basho_bench_config:get(port, 9312),
     Type = basho_bench_config:get(type),
 
     Query = case Type of
