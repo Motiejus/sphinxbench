@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
 import sys
+import os
 import csv
 
 import matplotlib.pyplot as plt
+
 
 def read_file(path):
     fn = "%s/summary.csv" % path
@@ -15,6 +17,7 @@ def read_file(path):
             y.append(int(line['total']) / float(line['window']))
     return x, y
 
+
 def main(paths):
     fig = plt.figure()
     plt.xlabel("Elapsed (s)")
@@ -22,6 +25,7 @@ def main(paths):
         label = path.split("/")[-1]
         x, y = read_file(path)
         plt.plot(x, y, label=label, marker='x')
+    plt.title(os.getenv("PLOT_TITLE", "").replace("\\n", "\n"))
     plt.legend(loc='best')
     plt.ylabel("Requests per second")
     plt.ylim(ymin=0)
