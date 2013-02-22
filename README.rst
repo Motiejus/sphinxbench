@@ -30,6 +30,7 @@ To get the graphs, run this after the tests::
 
     $ make results
 
+And have a look at ``tests`` directory.
 
 For more information check `basho_bench`_ documentation.
 
