@@ -36,13 +36,13 @@ or for binary protocol benchmark::
 These are interesting configuration parameters in ``sphinx_ql.conf`` and
 ``sphinx_bin.conf``::
 
-    {duration, 1}. % How long to run tests, in minutes
+    {duration, 1}. % Test duration, in minutes
 
-    {concurrent, 1}. % How many concurrent workers
+    {concurrent, 1}. % Number of concurrent workers
 
     {host, "127.0.0.1"}. % Where to find sphinx server
 
-    {port, 9306}. % Port to SphinxQL service
+    {port, 9306}. % SphinxQL default port is 9306, SphinxBin is 9312
 
     {type, heavy}. % 'heavy' or 'light'
 
