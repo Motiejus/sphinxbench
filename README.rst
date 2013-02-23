@@ -21,7 +21,7 @@ could construct. In QL::
 
     select *
         from game_data_index
-        where MATCH('Action')
+        where MATCH('Action') and siteid=12
         order by total_play_count desc
         limit 10;
 

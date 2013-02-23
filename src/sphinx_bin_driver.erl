@@ -20,7 +20,8 @@ new(_Id) ->
             Q2 = giza_query:host(Q1, Host),
             Q3 = giza_query:port(Q2, Port),
             Q4 = giza_query:limit(Q3, 10),
-            giza_query:sort_extended(Q4, "total_play_count desc")
+            Q5 = giza_query:add_filter(Q4, "siteid", [12]),
+            giza_query:sort_extended(Q5, "total_play_count desc")
     end,
     {ok, {Type, Query}}.
 
