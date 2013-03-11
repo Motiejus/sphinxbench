@@ -11,12 +11,12 @@ new(_Id) ->
 
     Query = case Type of
         light ->
-            Q1 = giza_query:new("game_data_index", ""),
+            Q1 = giza_query:new("game_data_index_12", ""),
             Q2 = giza_query:host(Q1, Host),
             Q3 = giza_query:port(Q2, Port),
             giza_query:add_filter(Q3, "siteid", [0]);
         heavy ->
-            Q1 = giza_query:new("game_data_index", "Action"),
+            Q1 = giza_query:new("game_data_index_12", "Action"),
             Q2 = giza_query:host(Q1, Host),
             Q3 = giza_query:port(Q2, Port),
             Q4 = giza_query:limit(Q3, 10),

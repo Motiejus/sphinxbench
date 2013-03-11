@@ -16,10 +16,10 @@ new(Id) ->
 
     Query = case Type of
         light ->
-            <<"select * from game_data_index where siteid=0;">>;
+            <<"select * from game_data_index_12 where siteid=0;">>;
         heavy ->
-            <<"select * from game_data_index where MATCH('Action') and ",
-            "siteid=12 order by total_play_count desc limit 10;">>
+            <<"select * from game_data_index_12 where MATCH('Action') ",
+            "order by total_play_count desc limit 10;">>
     end,
     {ok, {Type, Id, Query}}.
 
